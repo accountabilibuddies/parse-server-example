@@ -61,7 +61,7 @@ Parse.Cloud.define("androidPushTest", function(request, response) {
   Parse.Push.send({
     where: pushQuery, // Set our Installation query                                                                                                                                                              
     data: {
-      alert:  challenger + " just added you to a challenge!"
+      customdata:  challenger + " just added you to a challenge!"
     }
   }, { success: function() {
       console.log("#### PUSH OK");
