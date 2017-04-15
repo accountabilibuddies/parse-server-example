@@ -54,6 +54,7 @@ Parse.Cloud.define("androidPushTest", function(request, response) {
   var challenger = params.challenger;
   var challengeId = params.challengeId;
   var challengeType = params.challengeType;
+  var challengeName = params.challengeName;
 
   var pushQuery = new Parse.Query(Parse.Installation);
   pushQuery.equalTo('deviceType', 'android'); // targeting android devices only                                                                                                                                          
@@ -61,9 +62,10 @@ Parse.Cloud.define("androidPushTest", function(request, response) {
   Parse.Push.send({
     where: pushQuery, // Set our Installation query                                                                                                                                                              
     data: {
-      custommessage:  challenger + " just added you to a challenge!",
-      challengeid: challengeId,
-      challengeType: challengeType
+      customMessage:  challenger + " just added you to a challenge!",
+      challengeId: challengeId,
+      challengeType: challengeType,
+      challengeName: challengeName
     }
   }, { success: function() {
       console.log("#### PUSH OK");
