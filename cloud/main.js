@@ -54,7 +54,7 @@ Parse.Cloud.define("androidPushTest", function(request, response) {
 
   var pushQuery = new Parse.Query(Parse.Installation);
   pushQuery.equalTo('deviceType', 'android'); // targeting android devices only                                                                                                                                          
-
+  pushQuery.equalTo('channels', messageText);
   Parse.Push.send({
     where: pushQuery, // Set our Installation query                                                                                                                                                              
     data: {
