@@ -52,6 +52,7 @@ Parse.Cloud.define("androidPushTest", function(request, response) {
   var messageText = params.text;
   var channel = params.channel;
   var challenger = params.challenger;
+  var challengeId = params.challengeId;
 
   var pushQuery = new Parse.Query(Parse.Installation);
   pushQuery.equalTo('deviceType', 'android'); // targeting android devices only                                                                                                                                          
