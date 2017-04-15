@@ -49,16 +49,17 @@ Parse.Cloud.define("androidPushTest", function(request, response) {
   var params = request.params;
   var user = request.user;
 
-  // Our "Message" class has a "text" key with the body of the message itself                                                                                                                                    
   var messageText = params.text;
+  var channel = params.channel;
+  var challenger = params.challenger;
 
   var pushQuery = new Parse.Query(Parse.Installation);
   pushQuery.equalTo('deviceType', 'android'); // targeting android devices only                                                                                                                                          
-  pushQuery.equalTo('channels', messageText);
+  pushQuery.equalTo('channels', channel);
   Parse.Push.send({
     where: pushQuery, // Set our Installation query                                                                                                                                                              
     data: {
-      alert: "Message: " + messageText
+      alert:  challenger + " just added you to a challenge!"
     }
   }, { success: function() {
       console.log("#### PUSH OK");
