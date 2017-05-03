@@ -43,7 +43,7 @@ Parse.Cloud.define('pushChannelTest', function(request, response) {
 });
 
 // Android push testing
-Parse.Cloud.define("androidPushTest", function(request, response) {
+Parse.Cloud.define("spurChallenge", function(request, response) {
 
   // request has 2 parameters: params passed by the client and the authorized user                                                                                                                               
   var params = request.params;
@@ -55,6 +55,7 @@ Parse.Cloud.define("androidPushTest", function(request, response) {
   var challengeId = params.challengeId;
   var challengeType = params.challengeType;
   var challengeName = params.challengeName;
+  var challengeImageUrl = params.challengeImageUrl;
 
   var pushQuery = new Parse.Query(Parse.Installation);
   pushQuery.equalTo('deviceType', 'android'); // targeting android devices only                                                                                                                                          
@@ -65,7 +66,8 @@ Parse.Cloud.define("androidPushTest", function(request, response) {
       customMessage:  challenger + " just added you to a challenge!",
       challengeId: challengeId,
       challengeType: challengeType,
-      challengeName: challengeName
+      challengeName: challengeName,
+      challengeImageUrl: challengeImageUrl
     }
   }, { success: function() {
       console.log("#### PUSH OK");
